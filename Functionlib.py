@@ -29,7 +29,7 @@ def black_scholes(S0, K, T, r, vol, opt_type="C"):
         raise ValueError("Please confirm option type, either 'C' for Call or 'P' for Put")
 
 
-def monte_carlo_vectorized(S0, T, r, vol, M, antithetic=False):
+def monte_carlo(S0, T, r, vol, M, antithetic=False):
     """
     S0 : spot price at time t=0
     T : maturity (in years)
