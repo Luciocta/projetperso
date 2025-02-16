@@ -71,3 +71,11 @@ def monte_carlo(S0, T, r, vol, M, antithetic=False):
     S.columns=[f"{i+1}" for i in range(prices.shape[1])]
 
     return S
+
+
+def gamma(S0, K, T, r, vol):
+
+    d1=(np.log(S0/K) + (r+vol**2/2)*T)/(vol*np.sqrt(T))
+    Nprime = lambda x: np.exp(-x**2/2)/np.sqrt(2*np.pi)
+
+    return Nprime(d1)/(S0*vol*np.sqrt(T))
