@@ -2,11 +2,23 @@ version: "3.8"
 
 services:
   backend:
-    build: ./backend  # <- Vérifie que ce dossier contient bien un Dockerfile
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - PYTHONUNBUFFERED=1
 
   frontend:
-    build: ./src  # <- Vérifie que ce dossier contient bien un Dockerfile
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
+    volumes:
+      - ./frontend:/app
+    depends_on:
+      - backend
