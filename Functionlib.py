@@ -101,7 +101,7 @@ def gamma(S0, K, T, r, vol):
 
 
 def vega(S0, K, T, r , sigma):
-    d1=(np.log(S0/K) + (r+vol**2/2)*T)/(vol*np.sqrt(T))
+    d1=(np.log(S0/K) + (r+sigma**2/2)*T)/(sigma*np.sqrt(T))
     Nprime = lambda x: np.exp(-x**2/2)/np.sqrt(2*np.pi)
 
     return S0*np.sqrt(T)*Nprime(d1)
